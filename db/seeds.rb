@@ -13,12 +13,12 @@ User.destroy_all
 # Crear 20 usuarios
 
 20.times do
-  # User.create(
-  #   email: Faker::Internet.email(domain: 'gmail.com'),
-  #   first_name: Faker::Name.first_name,
-  #   last_name: Faker::Name.last_name,
-  #   birthdate: Faker::Date.birthday(min_age: 18, max_age: 65)
-  # )
+  User.create(
+    email: Faker::Internet.email(domain: 'gmail.com'),
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    birthdate: Faker::Date.birthday(min_age: 18, max_age: 65)
+  )
 
   Location.create(
     name: Faker::Address.city

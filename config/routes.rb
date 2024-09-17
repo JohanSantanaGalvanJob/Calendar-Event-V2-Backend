@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :event_categories
 
   # Las rutas de API deben estar en /api/v2
   namespace :api do

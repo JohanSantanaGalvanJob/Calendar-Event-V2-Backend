@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  resources :locations
-  resources :users
+
+  # Las rutas de API deben estar en /api/v2
+  namespace :api do
+    namespace :v2 do
+      resources :locations
+      resources :users
+    end
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  date: 2024-09-18
+  starting_hour: MyString
+  url: MyString
+  location_id: 1
+  event_category_id: 1
+
+two:
+  title: MyString
+  description: MyString
+  date: 2024-09-18
+  starting_hour: MyString
+  url: MyString
+  location_id: 1
+  event_category_id: 1

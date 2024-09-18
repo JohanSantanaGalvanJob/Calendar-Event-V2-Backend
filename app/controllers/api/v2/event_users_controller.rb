@@ -1,4 +1,4 @@
-class EventUsersController < ApplicationController
+class Api::V2::EventUsersController < ApplicationController
   before_action :set_event_user, only: %i[ show update destroy ]
 
   # GET /event_users

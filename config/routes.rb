@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
-  resources :event_users
-  resources :events
-  resources :event_categories
 
   # Las rutas de API deben estar en /api/v2
   namespace :api do
     namespace :v2 do
       resources :locations
       resources :users
+      resources :event_categories
+      resources :event_users
+      resources :events
+      resources :auth
+
+      # post '/signup', to: 'auth#signup'
+      # post '/login', to: 'auth#login'
     end
   end
 

@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class Api::V2::EventsController < ApplicationController
   before_action :set_event, only: %i[ show update destroy ]
 
   # GET /events

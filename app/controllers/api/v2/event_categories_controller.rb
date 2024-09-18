@@ -1,4 +1,4 @@
-class EventCategoriesController < ApplicationController
+class Api::V2::EventCategoriesController < ApplicationController
   before_action :set_event_category, only: %i[ show update destroy ]
 
   # GET /event_categories

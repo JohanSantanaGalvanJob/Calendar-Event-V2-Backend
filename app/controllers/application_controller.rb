@@ -1,4 +1,4 @@
-class Api::V2::ApplicationController < ActionController::API
+class ApplicationController < ActionController::API
 
   def authenticate_user
     token = request.headers['Authorization']

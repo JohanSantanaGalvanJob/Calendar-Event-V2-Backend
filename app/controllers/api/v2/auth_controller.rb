@@ -26,7 +26,7 @@ class Api::V2::AuthController < ApplicationController
    private
 
    def user_params
-     params.permit(:email, :password, :password_confirmation)
+     params.require(:auth).permit(:first_name, :last_name, :email, :password, :birthdate, :password_confirmation)
    end
 
    def encode_token(payload)

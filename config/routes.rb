@@ -8,10 +8,9 @@ Rails.application.routes.draw do
       resources :event_categories
       resources :event_users
       resources :events
-      resources :auth
 
-      # post '/signup', to: 'auth#signup'
-      # post '/login', to: 'auth#login'
+      post '/signup', to: 'auth#signup'
+      post '/login', to: 'auth#login'
     end
   end
 

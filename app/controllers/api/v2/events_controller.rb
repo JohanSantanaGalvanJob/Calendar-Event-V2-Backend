@@ -10,17 +10,22 @@ class Api::V2::EventsController < ApplicationController
 
   # GET /events/1
   def show
-    render json: @event
+    # @user = User.find(params[:id])
+    render json: { event: @event, image_url: url_for(@event.image) }
   end
 
   # POST /events
   def create
     @event = Event.new(event_params)
 
+    if params[:event][:image].present?
+      @event.image.attach(params[:event][:image])
+    end
+
     if @event.save
-      render json: @event, status: :created, location: @event
+      render json: { event: @event, image_url: url_for(@event.image) }, status: :created, location: @event
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -46,6 +51,6 @@ class Api::V2::EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:title, :description, :date, :starting_hour, :url, :location_id, :event_category_id)
+      params.require(:event).permit(:title, :description, :date, :starting_hour, :url, :location_id, :event_category_id, :image)
     end
 end

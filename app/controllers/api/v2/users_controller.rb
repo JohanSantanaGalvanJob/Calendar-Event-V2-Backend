@@ -10,17 +10,22 @@ class Api::V2::UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render json: @user
+    # @user = User.find(params[:id])
+    render json: { user: @user, image_url: url_for(@user.image) }
   end
 
   # POST /users
   def create
     @user = User.new(user_params)
 
+    if params[:user][:image].present?
+      @user.image.attach(params[:user][:image])
+    end
+
     if @user.save
-      render json: @user, status: :created, location: @user
+      render json: { user: @user, image_url: url_for(@user.image) }, status: :created, location: @user
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -46,6 +51,6 @@ class Api::V2::UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :birthdate)
+      params.require(:user).permit(:email, :first_name, :last_name, :birthdate, :image)
     end
 end
